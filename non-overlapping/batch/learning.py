@@ -190,7 +190,7 @@ def push_to_link():
     conn.commit()
 
 
-def tryit():
+def push_link_info_sql():
     sql = '''
     INSERT INTO LINK_INFO (cctv_a_id, grid_a_id, cctv_b_id, grid_b_id,
         time_lower_bound, time_upper_bound, timegap_avg, timegap_std, count,
@@ -344,7 +344,7 @@ def start():
     push_grid_info()
 
     push_link_info()
-    # tryit()
+    # push_link_info_sql()
 
 
     cur.close()

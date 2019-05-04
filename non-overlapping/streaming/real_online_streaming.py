@@ -102,9 +102,6 @@ def get_the_size_and_speed_variation_rate(cctv_a, grid_a, cctv_b, grid_b):
 
 
 def get_connected_cctv_list(cctv_id):
-    # this thread is waiting for the entry log to make a pair with exit log
-    # life cycle will be calculated upper
-    # after the upper, this thread will be expired
     sql = '''
     SELECT cctv_a_id AS cctv_id FROM link_init WHERE cctv_b_id=%(cctv_id)s
     UNION
@@ -156,7 +153,7 @@ def get_final_score(speed_rate, size_rate, grid_score, exit_log, entry_log):
     estimated_size = a[4] * size_rate
     final_score *= 1 - (abs(estimated_size - b[4]) / b[4])
     
-    # speed for now is not so accurate to use
+    # speed, for now, is not so accurate to use
     # speed
     # estimated_speed = a[5] * speed_rate
     # final_score *= 1 - (abs(estimated_speed - b[5]) / b[5])
